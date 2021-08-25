@@ -5,12 +5,27 @@ const e = React.createElement;
 class App extends React.Component {
   constructor(props) {
     super(props);
+    const initial_text_a = `ברוכים הבאים למחולל עברית רב־מגדרית!
+אתה יכול להחליף את הטקסט בשתי התיבות האלה
+בצורות זכר ונקבה של הטקסט שאתה רוצה,
+ולקבל את הגרסה הרב־מגדרית.
+כך נוכל לפנות לכולם, כי
+כל האנשים שוים!`
+
+    const initial_text_b = `ברוכים הבאים למחולל עברית רב־מגדרית!
+אתה יכול להחליף את הטקסט בשתי התיבות האלה
+בצורות זכר ונקבה של הטקסט שאתה רוצה,
+ולקבל את הגרסה הרב־מגדרית.
+כך נוכל לפנות לכולם, כי
+כל האנשים שוות!`
+
     this.state = {
-      word_a: '',
-      word_b: '',
-      add_rev: false,
-      output: ''
+      word_a: initial_text_a,
+      word_b: initial_text_b,
+      add_rev: true,
+      output: this.to_multigender_hebrew(initial_text_a, initial_text_b, true)
     };
+
   }
 
   to_multigender_hebrew(word_a, word_b, add_rev) {
@@ -189,16 +204,23 @@ class App extends React.Component {
   }
 
   render() {
-    return e('div', {}, '',
-      e('p', {}, 'טקסט א\''),
-      e('input', { name: 'word_a', onChange: (evt) => this.transform(evt), value: this.state.word_a }),
-      e('div'),
-      e('p', {}, 'טקסט ב\''),
-      e('input', { name: 'word_b', onChange: (evt) => this.transform(evt), value: this.state.word_b }),
-      e('p', {}, ' להוסיף רב (א׈)?'),
-      e('input', { name: 'add_rev', type: 'checkbox', onChange: (evt) => this.handle_add_rev_event(evt), checked: this.state.add_rev }),
-      e('p', {}, 'תוצאה: '),
-      e('p', {}, this.state.output),
+    return e('div', {},
+              e('div', { name: 'input' },
+                  e('span', {}, 'טקסט א\''),
+                  e('textarea', { name: 'word_a', onChange: (evt) => this.transform(evt), value: this.state.word_a }),
+                  e('div'),
+                  e('span', {}, 'טקסט ב\''),
+                  e('textarea', { name: 'word_b', onChange: (evt) => this.transform(evt), value: this.state.word_b }),
+                  e('span', {}, ' להוסיף רב (א׈)?'),
+                  e('input', { name: 'add_rev', type: 'checkbox', onChange: (evt) => this.handle_add_rev_event(evt), checked: this.state.add_rev }),
+                ),
+
+              e('div', {name: 'ouput'}, 
+                e('span', {}, 'תוצאה: '),
+                e('p', {}, ''),
+                e('span', {}, this.state.output),
+                )
+      
     );
   }
 }

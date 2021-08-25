@@ -15,6 +15,10 @@ p.rtl {
   padding: 10px;
 }
 
+span{
+  white-space: pre;
+}
+
 .form-inline{
   display: flex;
   flex-flow: row wrap;

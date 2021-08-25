@@ -204,22 +204,26 @@ class App extends React.Component {
   }
 
   render() {
-    return e('div', {},
-              e('div', { name: 'input' },
-                  e('span', {}, 'טקסט א\''),
-                  e('textarea', { name: 'word_a', onChange: (evt) => this.transform(evt), value: this.state.word_a }),
-                  e('div'),
-                  e('span', {}, 'טקסט ב\''),
-                  e('textarea', { name: 'word_b', onChange: (evt) => this.transform(evt), value: this.state.word_b }),
-                  e('span', {}, ' להוסיף רב (א׈)?'),
-                  e('input', { name: 'add_rev', type: 'checkbox', onChange: (evt) => this.handle_add_rev_event(evt), checked: this.state.add_rev }),
-                ),
+    return e('div', { },
+              e('div', { name: 'input', className: 'wrapper' },
+                  e('div', { name: 'input'},
+                      e('h4', {}, 'טקסט א\''),
+                      e('textarea', { name: 'word_a', onChange: (evt) => this.transform(evt), value: this.state.word_a }),
+                      e('div'),
+                      e('h4', {}, 'טקסט ב\''),
+                      e('textarea', { name: 'word_b', onChange: (evt) => this.transform(evt), value: this.state.word_b }),
+                      e('div', {className: 'rev-input'},
+                          e('h4', {}, ' להוסיף רב (א׈)?'),
+                          e('input', { name: 'add_rev', type: 'checkbox', onChange: (evt) => this.handle_add_rev_event(evt), checked: this.state.add_rev }),
+                       )
+                    ),
 
-              e('div', {name: 'ouput'}, 
-                e('span', {}, 'תוצאה: '),
-                e('p', {}, ''),
-                e('span', {}, this.state.output),
-                )
+                  e('div', {name: 'ouput'}, 
+                    e('h4', {}, 'תוצאה: '),
+                    e('p', {}, ''),
+                    e('span', {className: 'output'}, this.state.output),
+                    )
+                ),
       
     );
   }

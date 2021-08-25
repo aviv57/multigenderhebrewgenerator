@@ -1,3 +1,14 @@
+textarea {
+	width: 600px;
+	height: 120px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-image: url(bg.gif);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
 p.rtl {
   font-family: "AlefMultiGenderHebrew";
   direction: rtl;
@@ -10,8 +21,9 @@ p.rtl {
 
 #app_container {
   font-family: "AlefMultiGenderHebrew";
-  margin: auto;
-  width: 10%;
+  display: grid;
+  grid-template-columns: 80px 200px auto 40px;
+  width: 70%;
   padding: 10px;
 }
 
@@ -19,9 +31,22 @@ span{
   white-space: pre;
 }
 
-.form-inline{
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  background-color: aqua;  
+.wrapper{
+  width: 20%;
+  /* Center vertically and horizontally */
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
+}
+
+.output{
+  font-size: 24px;
+}
+
+h4.rev-input{
+  width: 15%;
+  height: 200px;
+  color: red;
+  float: right;
 }

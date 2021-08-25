@@ -5,19 +5,20 @@ const e = React.createElement;
 class App extends React.Component {
   constructor(props) {
     super(props);
-    const initial_text_a = `ברוכים הבאים למחולל עברית רב־מגדרית!
-אתה יכול להחליף את הטקסט בשתי התיבות האלה
-בצורות זכר ונקבה של הטקסט שאתה רוצה,
+    
+    const initial_text_a = `ברוכות הבאות למחולל עברית רב־מגדרית!
+את יכולה להחליף את הטקסט בשתי התיבות האלה
+בצורות זכר ונקבה של הטקסט שאת רוצה,
 ולקבל את הגרסה הרב־מגדרית.
-כך נוכל לפנות לכולם, כי
-כל האנשים שוים!`
+כך נוכל לפנות לכולן, כי כל הנשים שוות!`
 
     const initial_text_b = `ברוכים הבאים למחולל עברית רב־מגדרית!
 אתה יכול להחליף את הטקסט בשתי התיבות האלה
 בצורות זכר ונקבה של הטקסט שאתה רוצה,
 ולקבל את הגרסה הרב־מגדרית.
-כך נוכל לפנות לכולם, כי
-כל האנשים שוות!`
+כך נוכל לפנות לכולם, כי כל האנשים שוים!`
+
+
 
     this.state = {
       word_a: initial_text_a,
@@ -206,6 +207,8 @@ class App extends React.Component {
   render() {
     return e('div', { },
               e('div', { name: 'input', className: 'wrapper' },
+    		e('h1',{},'מחולל עברית רב־מגדרית'),
+    		
                   e('div', { name: 'input'},
                       e('h4', {}, 'טקסט א\''),
                       e('textarea', { name: 'word_a', onChange: (evt) => this.transform(evt), value: this.state.word_a }),
@@ -213,8 +216,9 @@ class App extends React.Component {
                       e('h4', {}, 'טקסט ב\''),
                       e('textarea', { name: 'word_b', onChange: (evt) => this.transform(evt), value: this.state.word_b }),
                       e('div', {className: 'rev-input'},
-                          e('h4', {}, ' להוסיף רב (א׈)?'),
-                          e('input', { name: 'add_rev', type: 'checkbox', onChange: (evt) => this.handle_add_rev_event(evt), checked: this.state.add_rev }),
+//                          e('h4', {}, ' להוסיף רב (א׈)?'),
+                          e('input', { name: 'add_rev', id:'add_rev' ,type: 'checkbox', onChange: (evt) => this.handle_add_rev_event(evt), checked: this.state.add_rev }),
+                          e('label', { for:'add_rev' }, 'להוסיף סימן ניקוד \"רב\" (ע׈)?')
                        )
                     ),
 

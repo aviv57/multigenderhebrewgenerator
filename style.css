@@ -1,0 +1,23 @@
+p.rtl {
+  font-family: "AlefMultiGenderHebrew";
+  direction: rtl;
+}
+
+@font-face {
+    font-family: "AlefMultiGenderHebrew";
+    src: url("fonts/AlefMultiGndr-Regular.woff");
+}
+
+#app_container {
+  font-family: "AlefMultiGenderHebrew";
+  margin: auto;
+  width: 10%;
+  padding: 10px;
+}
+
+.form-inline{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  background-color: aqua;  
+}
